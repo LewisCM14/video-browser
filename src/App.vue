@@ -1,8 +1,7 @@
 <template>
     <div>
         <SearchBar @termChange="onTermChange"></SearchBar>
-        <VideoList></VideoList>
-        {{ videos.length }}
+        <VideoList :videos="videos"></VideoList>
     </div>
 </template>
 
@@ -12,7 +11,6 @@ import axios from "axios";
 import SearchBar from "./components/SearchBar.vue";
 import VideoList from "./components/VideoList.vue";
 
-
 export default {
     name: "App",
     components: {
@@ -20,7 +18,7 @@ export default {
         VideoList,
     },
     data() {
-        return { videos: [], }
+        return { videos: [] };
     },
     methods: {
         onTermChange(searchTerm) {
@@ -34,7 +32,7 @@ export default {
                     },
                 })
                 .then((response) => {
-                    this.videos = response.data.items
+                    this.videos = response.data.items;
                 });
         },
     },
